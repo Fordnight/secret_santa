@@ -1,0 +1,56 @@
+version: '3.7'
+
+services:
+
+  rails:
+    build: .
+    image: rails
+    volumes:
+      - ./:/www
+      - node_modules:/www/node_modules
+      - packs:/www/public/packs
+      - assets:/www/public/assets
+      - test-bash:/root/usr
+      - ~/.ssh:/root/.ssh
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+      - RAILS_ENV=${RAILS_ENV:-development}
+      - mysql_host=mysql
+      - caching_redis_host=redis
+      - mailcatcher_host=mailcatcher
+    command: /usr/share/rvm/wrappers/ruby-2.7.4/bundle exec rails server -b 0.0.0.0 -p 80 --pid=/tmp/server.pid
+    ports:
+      - 80:80
+    depends_on:
+      - mysql
+      - redis
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: blog_test
+      MYSQL_ROOT_PASSWORD: "123123"
+    ports:
+      - 8806:3306
+    volumes:
+      - test-mysql:/var/lib/mysql
+      #- ./docker/mysql/import:/docker-entrypoint-initdb.d
+
+  redis:
+    image: redis:4.0
+    volumes:
+      - test-redis:/data
+
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - 1080:1080
+
+volumes:
+  test-mysql:
+  test-redis:
+  test-bash:
+  node_modules:
+  packs:
+  assets:

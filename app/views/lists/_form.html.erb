@@ -1,0 +1,34 @@
+<%= form_with model: @list, local: true do |form| %>
+
+    <% if @list.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@list.errors.count, "error") %> prohibited
+          this list from being saved:
+        </h2>
+        <ul>
+          <% @list.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <p>
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
+    </p>
+
+    <p>
+      <%= form.label "Gift Type" %><br>
+      <%= form.select :gift_type_id, GiftType.all.collect{ |p| [p.name, p.id] } %>
+      <input name="User[][name]">
+      <input name="User[][name]">
+      <input name="User[][name]">
+    </p>
+
+    <p>
+      <%= form.submit %>
+    </p>
+
+  <% end %>

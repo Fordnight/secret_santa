@@ -1,0 +1,2 @@
+class GiftType< ApplicationRecord
+end
