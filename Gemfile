@@ -32,12 +32,12 @@ end
 
 group :development do
   ##gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'capistrano-rails' # Deployment tool
-  gem 'capistrano-rvm'
-  gem 'capistrano-yarn'
-  gem 'capistrano3-nginx', '~> 2.0'
-  gem 'capistrano3-puma', '4.0.0'
+  #gem 'listen', '>= 3.0.5', '< 3.2'
+  #gem 'capistrano-rails' # Deployment tool
+  #gem 'capistrano-rvm'
+  #gem 'capistrano-yarn'
+  #gem 'capistrano3-nginx', '~> 2.0'
+  #gem 'capistrano3-puma', '4.0.0'
 end
 
 group :test do
