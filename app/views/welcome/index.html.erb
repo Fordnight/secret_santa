@@ -1,5 +1,6 @@
-
 <h1>Hello, Okteto! jacr</h1>
 <%= link_to 'My Blog', controller: 'articles' %>
 
+<%= link_to 'Logout', destroy_user_session_url %>
 
+<%= button_to "Log out", destroy_user_session_path, method: :delete %>
