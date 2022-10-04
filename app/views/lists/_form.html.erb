@@ -16,16 +16,36 @@
 
     <p>
       <%= form.label :title %><br>
-      <%= form.text_field :title %>
+      <%= form.text_field :title, required: 'required' %>
     </p>
 
     <p>
       <%= form.label "Gift Type" %><br>
-      <%= form.select :gift_type_id, GiftType.all.collect{ |p| [p.name, p.id] } %>
-      <input name="User[][name]">
-      <input name="User[][name]">
-      <input name="User[][name]">
+      <%= form.select :gift_type_id, @gift_types_select %>
     </p>
+
+
+      <br/>
+      <table style="width:100%" class = "table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+         </tr>
+        </thead>
+        <tbody>
+          <% for i in 0..4 do %>
+          <tr>
+            <td><input type="text" placeholder="Name" name="list[users][<%= i %>][first_name]"></td>
+            <td><input type="text" placeholder="Last Name" name="list[users][<%= i %>][last_name]"></td>
+            <td><input type="email" placeholder="Email" name="list[users][<%= i %>][email]"></td>
+         </tr>
+          <% end %>
+
+        </tbody>
+
+      </table>
 
     <p>
       <%= form.submit %>

@@ -2,6 +2,7 @@ class ListsController < ApplicationController
 
     def new
         @list = List.new
+        @gift_types_select = GiftType.all.collect{ |p| [p.name, p.id] }
     end
 
     def edit
@@ -19,12 +20,14 @@ class ListsController < ApplicationController
     end
 
     def create
-        @list = List.new(list_params)
-        if @list.save
+
+        @list = List.create_list(list_params)
+        if @list
             redirect_to @list
         else
             render 'new'
         end
+
     end
 
     def destroy
@@ -44,6 +47,6 @@ class ListsController < ApplicationController
 
     private
         def list_params
-            params.require(:list).permit(:title, :gift_type_id)
+            params.require(:list).permit(:title, :gift_type_id, users: [:first_name, :last_name, :email])
         end
 end
