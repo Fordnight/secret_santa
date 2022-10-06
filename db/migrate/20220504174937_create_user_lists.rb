@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class CreateUserLists < ActiveRecord::Migration[5.2]
   def change
     create_table :user_lists do |t|
       t.references :user,  null: false, foreign_key: true
       t.references :list,  null: false, foreign_key: true
-      
+
       t.timestamps
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_28_201324) do
+ActiveRecord::Schema.define(version: 2022_10_06_195900) do
 
   create_table "articles", charset: "latin1", force: :cascade do |t|
     t.string "title"
@@ -37,13 +37,21 @@ ActiveRecord::Schema.define(version: 2022_09_28_201324) do
     t.index ["gift_type_id"], name: "index_lists_on_gift_type_id"
   end
 
-  create_table "user_lists", charset: "latin1", force: :cascade do |t|
-    t.bigint "user_id", null: false
+  create_table "player_lists", charset: "latin1", force: :cascade do |t|
+    t.bigint "player_id", null: false
     t.bigint "list_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["list_id"], name: "index_user_lists_on_list_id"
-    t.index ["user_id"], name: "index_user_lists_on_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_player_lists_on_list_id"
+    t.index ["player_id"], name: "index_player_lists_on_player_id"
+  end
+
+  create_table "players", charset: "latin1", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_players_on_email", unique: true
   end
 
   create_table "users", charset: "latin1", force: :cascade do |t|
@@ -72,8 +80,8 @@ ActiveRecord::Schema.define(version: 2022_09_28_201324) do
   end
 
   add_foreign_key "lists", "gift_types"
-  add_foreign_key "user_lists", "lists"
-  add_foreign_key "user_lists", "users"
+  add_foreign_key "player_lists", "lists"
+  add_foreign_key "player_lists", "players"
   add_foreign_key "wish_lists", "lists"
   add_foreign_key "wish_lists", "users"
 end

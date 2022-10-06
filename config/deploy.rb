@@ -1,15 +1,18 @@
-# config valid for current version and patch releases of Capistrano
-lock "~> 3.17.0"
+# frozen_string_literal: true
 
-set :application, "jomi.fun"
-set :repo_url, "git@github.com:jacr1102/jomis.git"
+# config valid for current version and patch releases of Capistrano
+lock '~> 3.17.0'
+
+set :application, 'jomi.fun'
+set :repo_url, 'git@github.com:jacr1102/jomis.git'
 set :use_sudo, true
 set :rvm_ruby_version, 'ruby-2.7.4'
-set :pty,  false
-#append :linked_files, 'config/application.yml'
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'tmp/journals','tmp/logos', 'vendor/bundle', 'public/system', 'private', "public/packs", ".bundle", "node_modules"
+set :pty, false
+# append :linked_files, 'config/application.yml'
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'tmp/journals', 'tmp/logos', 'vendor/bundle',
+       'public/system', 'private', 'public/packs', '.bundle', 'node_modules'
 
-#set :bundle_dir, "/usr/share/rvm/rubies/ruby-2.7.4"
+# set :bundle_dir, "/usr/share/rvm/rubies/ruby-2.7.4"
 set :migration_role, :app
 set :conditionally_migrate, true
 

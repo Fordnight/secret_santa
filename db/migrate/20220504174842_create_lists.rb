@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class CreateLists < ActiveRecord::Migration[5.2]
   def change
     create_table :lists do |t|
-      t.references :gift_type, null: false, foreign_key: true 
+      t.references :gift_type, null: false, foreign_key: true
       t.string :tittle
       t.integer :wishlist_max
       t.float :price_min
