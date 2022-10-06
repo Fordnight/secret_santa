@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class List < ApplicationRecord
-  has_many :user_lists
-  has_many :users, through: :user_lists
+  has_many :player_lists
+  has_many :players, through: :player_lists
 
   belongs_to :gift_type
 
@@ -11,8 +11,8 @@ class List < ApplicationRecord
 
     if new_list
 
-      list_params[:users].each do |_i, user|
-        new_list.users.create!(user)
+      list_params[:players].each do |_i, player|
+        new_list.players.create!(player)
       end
     end
   end

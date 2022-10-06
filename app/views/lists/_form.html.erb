@@ -29,17 +29,16 @@
       <table style="width:100%" class = "table table-striped table-bordered">
         <thead>
           <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Name</th>
             <th>Email</th>
          </tr>
         </thead>
         <tbody>
           <% for i in 0..4 do %>
           <tr>
-            <td><input type="text" placeholder="Name" name="list[users][<%= i %>][first_name]"></td>
-            <td><input type="text" placeholder="Last Name" name="list[users][<%= i %>][last_name]"></td>
-            <td><input type="email" placeholder="Email" name="list[users][<%= i %>][email]"></td>
+            <td><input type="text" placeholder="Name" name="list[players][<%= i %>][name]"></td>
+
+            <td><input type="email" placeholder="Email" name="list[players][<%= i %>][email]"></td>
          </tr>
           <% end %>
 

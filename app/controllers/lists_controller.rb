@@ -33,7 +33,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @list.destroy
 
-    redirect_to Lists_path
+    redirect_to lists_path
   end
 
   def show
@@ -47,6 +47,6 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:title, :gift_type_id, users: %i[first_name last_name email])
+    params.require(:list).permit(:title, :gift_type_id, players: %i[name  email])
   end
 end
