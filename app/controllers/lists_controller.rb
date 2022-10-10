@@ -44,6 +44,13 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
+  def play
+    @list = List.find(params[:id])
+    @list.run_raffle
+
+    redirect_to @list
+  end
+
   private
 
   def list_params

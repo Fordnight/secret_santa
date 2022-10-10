@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :articles
-  resources :lists
+
+  resources :lists do
+    get 'play', on: :member
+  end
+
 
   devise_for :users, controllers: {
     sessions: 'users/sessions'

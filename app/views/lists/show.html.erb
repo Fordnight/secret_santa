@@ -14,26 +14,34 @@
       <th>Id</th>
       <th>Name</th>
       <th>Email</th>
+      <th>secret friend</th>
+      <th>Email friend</th>
     </tr>
   </thead>
   <tbody>
-    <% @list.players.each do |player| %>
+    <% @list.player_lists.each do |item| %>
       <tr>
         <td>
-          <%= player.id  %>
+          <%= item.player.id  %>
         </td>
         <td>
-          <%= player.name  %>
+          <%= item.player.name  %>
         </td>
         <td>
-          <%= player.email  %>
+          <%= item.player.email  %>
         </td>
-
+         <td>
+          <%= item.secret_friend ? item.secret_friend.name : 'No assigned' %>
+        </td>
+         <td>
+          <%= item.secret_friend&.email  %>
+        </td>
       </tr>
     <%end%>
-
   </tbody>
 </table>
+<a href="/lists/<%= @list.id %>/play" class="btn btn-primary">Play</a>
+
 
 <%= link_to 'Edit', edit_list_path(@list) %> |
 <%= link_to 'Back', lists_path %>

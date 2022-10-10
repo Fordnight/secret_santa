@@ -16,4 +16,24 @@ class List < ApplicationRecord
       end
     end
   end
+
+  def run_raffle
+    assigned = []
+    available_players = []
+
+    players.each do |player|
+      available_players = players.collect(&:id) - [player.id] - assigned
+
+      if available_players.empty?
+        interchangable_user = PlayerList.find(players.first.id)
+        available_players.push interchangable_user.secret_friend_id
+        interchangable_user.update(secret_friend_id: player.id)
+      end
+
+      secret_friend = available_players.sample
+      assigned.push(secret_friend)
+      player_raffle = self.player_lists.find_by_player_id(player.id)
+      player_raffle.update(secret_friend_id: secret_friend)
+    end
+  end
 end

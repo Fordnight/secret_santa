@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_06_195900) do
+ActiveRecord::Schema.define(version: 2022_10_07_173553) do
 
   create_table "articles", charset: "latin1", force: :cascade do |t|
     t.string "title"
@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(version: 2022_10_06_195900) do
     t.bigint "list_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "secret_friend_id"
     t.index ["list_id"], name: "index_player_lists_on_list_id"
     t.index ["player_id"], name: "index_player_lists_on_player_id"
+    t.index ["secret_friend_id"], name: "index_player_lists_on_secret_friend_id"
   end
 
   create_table "players", charset: "latin1", force: :cascade do |t|
@@ -82,6 +84,7 @@ ActiveRecord::Schema.define(version: 2022_10_06_195900) do
   add_foreign_key "lists", "gift_types"
   add_foreign_key "player_lists", "lists"
   add_foreign_key "player_lists", "players"
+  add_foreign_key "player_lists", "players", column: "secret_friend_id"
   add_foreign_key "wish_lists", "lists"
   add_foreign_key "wish_lists", "users"
 end
