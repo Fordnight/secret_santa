@@ -1,8 +1,8 @@
 class SecretFriend < ActiveRecord::Migration[6.1]
   def up
-    add_reference :player_lists, :secret_friend, index: true, foreign_key: {to_table: :players }, null: true
+    add_column :player_lists, :secret_friend_id, :integer, null: true
   end
   def down
-    remove_reference :player_lists, :secret_friend, index: true, foreign_key: {to_table: :players }
+    remove_column :player_lists, :secret_friend_id, :integer
   end
 end
