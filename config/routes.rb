@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   resources :articles
 
+  get 'pokemons', to: 'pokemons#index'
+  get 'pokemons/show/:name', to:'pokemons#show', as: 'pokemons_show'
+
+
   resources :lists do
     get 'play', on: :member
   end

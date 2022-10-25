@@ -31,6 +31,7 @@ gem 'nokogiri'
 gem 'redis' # Data caching
 
 group :development, :test do
+  gem 'rest-client'
   gem 'byebug'
   gem 'capybara'
   gem 'factory_bot_rails'

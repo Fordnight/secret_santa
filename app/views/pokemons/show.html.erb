@@ -1,0 +1,40 @@
+
+<h1>
+  <%= @result['forms'][0]['name'] %>
+</h1>
+<img src= <%= @result['sprites']['versions']['generation-v']['black-white']['animated']['front_default'] %>>
+
+
+<table table style="width:100%" class = "table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Name<b></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @result['abilities'].each do |ability| %>
+      <tr>
+        <td>
+          <%= ability['ability']['name'] %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<table table style="width:100%" class = "table table-striped  table-bordered">
+  <thead>
+    <tr>
+    <th>Type<b></th>
+  </tr>
+</thead>
+  <tbody>
+      <tr>
+        <td>
+          <%= @result['types'][0]['type']['name'] %>
+        </td>
+      </tr>
+  </tbody>
+</table>
